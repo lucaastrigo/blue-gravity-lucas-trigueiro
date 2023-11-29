@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a40d1230bbb7b42b564a880660e1de, type: 3}
+  m_Name: Long Hair
+  m_EditorClassIdentifier: 
+  itemType: 1
+  idle:
+  - {fileID: -191404057, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  walkDown:
+  - {fileID: 1550745908, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -2028694118, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -344913390, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -445022465, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -2060697351, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 2058281243, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  walkLeft:
+  - {fileID: -742226457, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 458859778, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 1555386929, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 1902458804, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 1994878894, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -1109122443, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  walkRight:
+  - {fileID: -1954446594, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -580684481, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -470655768, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 1850587621, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -338863674, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 2086944408, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  walkUp:
+  - {fileID: -1313744892, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -48762355, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: 838967503, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -2077648982, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -192189039, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  - {fileID: -936019895, guid: dd561435b5db4664cbd0c262f7b7db56, type: 3}
+  value: 4
+  equipped: 0
+  bought: 0

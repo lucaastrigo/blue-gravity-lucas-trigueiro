@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a40d1230bbb7b42b564a880660e1de, type: 3}
+  m_Name: Witch Hat
+  m_EditorClassIdentifier: 
+  itemType: 2
+  idle:
+  - {fileID: -103482172, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  walkDown:
+  - {fileID: -270728594, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -923123940, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 1174933936, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 1026925994, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 17293941, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 1337833353, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  walkLeft:
+  - {fileID: -1120167325, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -217220750, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 1820936582, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -253215268, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 764304112, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -1178504744, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  walkRight:
+  - {fileID: -2061176129, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -248010928, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 1111309624, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -540065501, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 728226366, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 261820074, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  walkUp:
+  - {fileID: 519224855, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -1569221771, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 324485376, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: -1566842659, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 1778968124, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  - {fileID: 1205892441, guid: bc639f6749b34ad47bfa7a5c461a756c, type: 3}
+  value: 15
+  equipped: 0
+  bought: 0

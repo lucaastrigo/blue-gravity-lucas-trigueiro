@@ -18,7 +18,7 @@ public class AnimationManager : MonoBehaviour
     public List<AnimationType> animations = new List<AnimationType>();
 
     [HideInInspector] public int currentAnimationID;
-    private int currentIndex;
+    [HideInInspector] public int currentIndex;
     private float timer;
     private SpriteRenderer sr;
 
@@ -29,11 +29,11 @@ public class AnimationManager : MonoBehaviour
 
     void Update()
     {
-        if (animations[currentAnimationID].sprites.Length <= 1) return;
+        if (animations[currentAnimationID].sprites.Length <= 0) return;
 
         if(timer >= 1/fps)
         {
-            if(currentIndex == animations[currentAnimationID].sprites.Length - 1)
+            if(currentIndex >= animations[currentAnimationID].sprites.Length - 1)
             {
                 currentIndex = 0;
             }

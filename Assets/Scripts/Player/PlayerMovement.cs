@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public ClothObject testCloth;
-
     public float speed;
     public AnimationManager[] animationManagers;
     
-    private bool canMove, moving;
+    [HideInInspector] public bool canMove;
     private float xMove, yMove;
     private Vector2 moveDir;
     //private Animator anim;
@@ -25,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
         wearables = GetComponent<Wearables>();
 
         canMove = true;
-        moving = false;
     }
 
     void FixedUpdate()
@@ -41,95 +38,192 @@ public class PlayerMovement : MonoBehaviour
             moveDir = new Vector2(xMove, yMove).normalized;
 
             if(rb != null) rb.velocity = new Vector2(moveDir.x * speed, moveDir.y * speed);
-
-            if (xMove != 0 || yMove != 0)
-            {
-                moving = true;
-                //anim.SetBool("walk", true);
-            }
-            else
-            {
-                moving = false;
-                //anim.SetBool("walk", false);
-            }
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        for (int i = 0; i < animationManagers.Length; i++)
         {
-            if(testCloth != null)
+            if (yMove > 0)
             {
-                switch (testCloth.itemType)
-                {
-                    case ClothObject.type.cloth:
-                        wearables.cloth.SetActive(true);
+                animationManagers[i].currentAnimationID = 4;
+            }
+            else if (yMove < 0)
+            {
+                animationManagers[i].currentAnimationID = 1;
+            }
 
-                        AnimationManager clothManager = wearables.cloth.GetComponent<AnimationManager>();
+            if (xMove > 0 && yMove == 0)
+            {
+                animationManagers[i].currentAnimationID = 3;
+            }
+            else if (xMove < 0 && yMove == 0)
+            {
+                animationManagers[i].currentAnimationID = 2;
+            }
 
-                        if (clothManager != null)
-                        {
-                            clothManager.animations[0].sprites = null;
-                            clothManager.animations[1].sprites = null;
-                            clothManager.animations[2].sprites = null;
-                            clothManager.animations[3].sprites = null;
-                            clothManager.animations[4].sprites = null;
+            if (xMove == 0 && yMove == 0)
+            {
+                animationManagers[i].currentAnimationID = 0;
+            }
+        }
+    }
 
-                            clothManager.animations[0].sprites = testCloth.idle;
-                            clothManager.animations[1].sprites = testCloth.walkDown;
-                            clothManager.animations[2].sprites = testCloth.walkLeft;
-                            clothManager.animations[3].sprites = testCloth.walkRight;
-                            clothManager.animations[4].sprites = testCloth.walkUp;
-                        }
+    public void EquipUnequipCloth(ClothObject clothObj)
+    {
+        if (clothObj.equipped)
+        {
+            UnequipCloth(clothObj);
+        }
+        else
+        {
+            EquipCloth(clothObj);
+        }
+    }
 
-                        break;
+    public void UnequipCloth(ClothObject toUnequip)
+    {
+        if (toUnequip != null)
+        {
+            toUnequip.equipped = false;
 
-                    case ClothObject.type.hair:
-                        wearables.hair.SetActive(true);
-                        wearables.hat.SetActive(false);
+            for (int i = 0; i < animationManagers.Length; i++)
+            {
+                animationManagers[i].currentIndex = 0;
+            }
 
-                        AnimationManager hairManager = wearables.hair.GetComponent<AnimationManager>();
+            switch (toUnequip.itemType)
+            {
+                case ClothObject.type.cloth:
+                    wearables.cloth.SetActive(false);
 
-                        if (hairManager != null)
-                        {
-                            hairManager.animations[0].sprites = null;
-                            hairManager.animations[1].sprites = null;
-                            hairManager.animations[2].sprites = null;
-                            hairManager.animations[3].sprites = null;
-                            hairManager.animations[4].sprites = null;
+                    AnimationManager clothManager = wearables.cloth.GetComponent<AnimationManager>();
 
-                            hairManager.animations[0].sprites = testCloth.idle;
-                            hairManager.animations[1].sprites = testCloth.walkDown;
-                            hairManager.animations[2].sprites = testCloth.walkLeft;
-                            hairManager.animations[3].sprites = testCloth.walkRight;
-                            hairManager.animations[4].sprites = testCloth.walkUp;
-                        }
+                    if (clothManager != null)
+                    {
+                        clothManager.animations[0].sprites = null;
+                        clothManager.animations[1].sprites = null;
+                        clothManager.animations[2].sprites = null;
+                        clothManager.animations[3].sprites = null;
+                        clothManager.animations[4].sprites = null;
+                    }
 
-                        break;
+                    break;
 
-                    case ClothObject.type.hat:
-                        wearables.hat.SetActive(true);
-                        wearables.hair.SetActive(false);
+                case ClothObject.type.hair:
+                    wearables.hair.SetActive(false);
 
-                        AnimationManager hatManager = wearables.hat.GetComponent<AnimationManager>();
+                    AnimationManager hairManager = wearables.hair.GetComponent<AnimationManager>();
 
-                        if (hatManager != null)
-                        {
-                            hatManager.animations[0].sprites = null;
-                            hatManager.animations[1].sprites = null;
-                            hatManager.animations[2].sprites = null;
-                            hatManager.animations[3].sprites = null;
-                            hatManager.animations[4].sprites = null;
+                    if (hairManager != null)
+                    {
+                        hairManager.animations[0].sprites = null;
+                        hairManager.animations[1].sprites = null;
+                        hairManager.animations[2].sprites = null;
+                        hairManager.animations[3].sprites = null;
+                        hairManager.animations[4].sprites = null;
+                    }
 
-                            hatManager.animations[0].sprites = testCloth.idle;
-                            hatManager.animations[1].sprites = testCloth.walkDown;
-                            hatManager.animations[2].sprites = testCloth.walkLeft;
-                            hatManager.animations[3].sprites = testCloth.walkRight;
-                            hatManager.animations[4].sprites = testCloth.walkUp;
-                        }
-                        break;
-                }
+                    break;
+
+                case ClothObject.type.hat:
+                    wearables.hat.SetActive(false);
+
+                    AnimationManager hatManager = wearables.hat.GetComponent<AnimationManager>();
+
+                    if (hatManager != null)
+                    {
+                        hatManager.animations[0].sprites = null;
+                        hatManager.animations[1].sprites = null;
+                        hatManager.animations[2].sprites = null;
+                        hatManager.animations[3].sprites = null;
+                        hatManager.animations[4].sprites = null;
+                    }
+                    break;
+            }
+        }
+    }
+
+    public void EquipCloth(ClothObject toEquip)
+    {
+        if (toEquip != null)
+        {
+            toEquip.equipped = true;
+
+            for (int i = 0; i < animationManagers.Length; i++)
+            {
+                animationManagers[i].currentIndex = 0;
+            }
+
+            switch (toEquip.itemType)
+            {
+                case ClothObject.type.cloth:
+                    wearables.cloth.SetActive(true);
+
+                    AnimationManager clothManager = wearables.cloth.GetComponent<AnimationManager>();
+
+                    if (clothManager != null)
+                    {
+                        clothManager.animations[0].sprites = null;
+                        clothManager.animations[1].sprites = null;
+                        clothManager.animations[2].sprites = null;
+                        clothManager.animations[3].sprites = null;
+                        clothManager.animations[4].sprites = null;
+
+                        clothManager.animations[0].sprites = toEquip.idle;
+                        clothManager.animations[1].sprites = toEquip.walkDown;
+                        clothManager.animations[2].sprites = toEquip.walkLeft;
+                        clothManager.animations[3].sprites = toEquip.walkRight;
+                        clothManager.animations[4].sprites = toEquip.walkUp;
+                    }
+
+                    break;
+
+                case ClothObject.type.hair:
+                    wearables.hair.SetActive(true);
+                    wearables.hat.SetActive(false);
+
+                    AnimationManager hairManager = wearables.hair.GetComponent<AnimationManager>();
+
+                    if (hairManager != null)
+                    {
+                        hairManager.animations[0].sprites = null;
+                        hairManager.animations[1].sprites = null;
+                        hairManager.animations[2].sprites = null;
+                        hairManager.animations[3].sprites = null;
+                        hairManager.animations[4].sprites = null;
+
+                        hairManager.animations[0].sprites = toEquip.idle;
+                        hairManager.animations[1].sprites = toEquip.walkDown;
+                        hairManager.animations[2].sprites = toEquip.walkLeft;
+                        hairManager.animations[3].sprites = toEquip.walkRight;
+                        hairManager.animations[4].sprites = toEquip.walkUp;
+                    }
+
+                    break;
+
+                case ClothObject.type.hat:
+                    wearables.hat.SetActive(true);
+                    wearables.hair.SetActive(false);
+
+                    AnimationManager hatManager = wearables.hat.GetComponent<AnimationManager>();
+
+                    if (hatManager != null)
+                    {
+                        hatManager.animations[0].sprites = null;
+                        hatManager.animations[1].sprites = null;
+                        hatManager.animations[2].sprites = null;
+                        hatManager.animations[3].sprites = null;
+                        hatManager.animations[4].sprites = null;
+
+                        hatManager.animations[0].sprites = toEquip.idle;
+                        hatManager.animations[1].sprites = toEquip.walkDown;
+                        hatManager.animations[2].sprites = toEquip.walkLeft;
+                        hatManager.animations[3].sprites = toEquip.walkRight;
+                        hatManager.animations[4].sprites = toEquip.walkUp;
+                    }
+                    break;
             }
         }
     }

@@ -8,13 +8,16 @@ public class Wearables : MonoBehaviour
     public GameObject hair;
     public GameObject hat;
 
-    void Start()
-    {
-        //
-    }
+    public Color hairColor;
 
-    void Update()
+    [HideInInspector] public SpriteRenderer clothSprite; 
+    [HideInInspector] public SpriteRenderer hairSprite; 
+    [HideInInspector] public SpriteRenderer hatSprite;
+
+    private void Start()
     {
-        //
+        clothSprite = cloth.GetComponent<SpriteRenderer>();
+        hairSprite = hair.GetComponent<SpriteRenderer>();
+        hatSprite = hat.GetComponent<SpriteRenderer>();
     }
 }

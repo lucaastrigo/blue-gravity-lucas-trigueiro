@@ -8,11 +8,11 @@ public class Shopkeeper : MonoBehaviour
     public GameObject shopMenu;
 
     private bool inTrigger;
-    private PlayerMovement player;
+    private Player player;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     void Update()
@@ -29,6 +29,7 @@ public class Shopkeeper : MonoBehaviour
     {
         shopMenu.SetActive(false);
         player.canMove = true;
+        interactionIndicator.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

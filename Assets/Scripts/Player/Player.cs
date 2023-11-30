@@ -13,10 +13,10 @@ public class Player : MonoBehaviour
     public AnimationManager[] animationManagers;
 
     [HideInInspector] public bool canMove;
-    private float xMove, yMove;
-    private Vector2 moveDir;
+    [HideInInspector] public float xMove, yMove;
+    [HideInInspector] public Vector2 moveDir;
     //private Animator anim;
-    private Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     private Wearables wearables;
 
     void Start()
@@ -105,7 +105,6 @@ public class Player : MonoBehaviour
     {
         if (toUnequip != null)
         {
-            print("vendi " + toUnequip.value);
             money += toUnequip.value;
             moneyText.text = "$" + money.ToString();
 
@@ -174,7 +173,6 @@ public class Player : MonoBehaviour
         {
             if(toEquip.value <= money)
             {
-                print("comprei " + toEquip.value);
                 money -= toEquip.value;
                 moneyText.text = "$" + money.ToString();
 

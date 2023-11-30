@@ -22,6 +22,10 @@ public class Shopkeeper : MonoBehaviour
             player.canMove = false;
             shopMenu.SetActive(true);
             interactionIndicator.SetActive(false);
+            player.moveDir = Vector2.zero;
+            player.rb.velocity = Vector2.zero;
+            player.xMove = 0;
+            player.yMove = 0;
         }
     }
 
